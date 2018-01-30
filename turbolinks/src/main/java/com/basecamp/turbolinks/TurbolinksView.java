@@ -157,8 +157,13 @@ public class TurbolinksView extends FrameLayout {
             TurbolinksSwipeRefreshLayout previousRefreshLayout = (TurbolinksSwipeRefreshLayout) webView.getParent();
             TurbolinksView previousTurbolinksView = (TurbolinksView) previousRefreshLayout.getParent();
 
-            if (screenshotsEnabled) previousTurbolinksView.screenshotView();
-            previousRefreshLayout.removeView(webView);
+            if (screenshotsEnabled)
+                previousTurbolinksView.screenshotView();
+            try {
+                previousRefreshLayout.removeView(webView);
+            } catch (Exception ignored) {
+
+            }
         }
 
         // Set the webview background to match the container background
